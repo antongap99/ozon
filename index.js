@@ -1,28 +1,9 @@
-function initProgressBlock() {
-    const progressBlock = document.createElement('div');
-    progressBlock.classList.add('progress-block');
-
-    const progressRing = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    progressRing.classList.add('progress-ring');
-    progressRing.setAttribute('width', '120');
-    progressRing.setAttribute('height', '120');
-
-    const progressRingCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    progressRingCircle.classList.add('progress-ring-circle');
-    progressRingCircle.setAttribute('cx', '60');
-    progressRingCircle.setAttribute('cy', '60');
-    progressRingCircle.setAttribute('r', '54');
-
-    progressRing.appendChild(progressRingCircle);
-    progressBlock.appendChild(progressRing);
-
-    return progressBlock;
-}
+import {createProgressBlock} from './progressBar'
 
 function init() {
-    const progressBlock = initProgressBlock();
-    const app = document.getElementById('root');
-
+	const app = document.getElementById('root');
+    const progressBlock = createProgressBlock();
+	
 
     const valueInput = document.createElement('input');
     valueInput.setAttribute('type', 'number');

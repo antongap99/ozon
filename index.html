@@ -7,23 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test</title>
     <style>
-        html {
-            box-sizing: border-box;
-        }
-
-        *, *:after, *:before {
-            box-sizing: inherit;
-        }
-
-        body {
-            margin: 0;
-        }
-
-        .app {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
         .progress-block {
             position: relative;
@@ -55,7 +38,8 @@
             }
         }
     </style>
-    <script defer src="./index.js"></script>
+	<link rel="stylesheet" href="./styles/global.css">
+    <script type="module" defer src="./index.js"></script>
 </head>
 <body>
     <div class="app" id="root"></div>
