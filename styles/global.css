@@ -14,4 +14,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+}
+
+
+
+/*progressControls*/
+.progress-block__control {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
 }
