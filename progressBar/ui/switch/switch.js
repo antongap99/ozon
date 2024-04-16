@@ -1,11 +1,12 @@
 import {createElement} from "../../utils/createElements.js";
 
-export const createSwitch = (attrs) => {
+export const createSwitch = (attrs, classname) => {
 
 	const input = createElement(
 		{
 			elementType: 'input',
-			attr: attrs,
+			attrs,
+			classname,
 		}
 	)
 
@@ -17,6 +18,6 @@ export const createSwitch = (attrs) => {
 	return createElement({
 		elementType: 'label',
 		classname: 'switch',
-		children:  [span, input],
+		children:  [input, span, ],
 	})
 }

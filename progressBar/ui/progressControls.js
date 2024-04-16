@@ -7,7 +7,6 @@ export const createControls = () => {
 		classname: 'progress-block__controls'
 	});
 
-
 	const valueLabel = createElement({
 		elementType: 'label',
 		text: 'Value',
@@ -34,11 +33,12 @@ export const createControls = () => {
 		children: [valueInput, valueLabel ]
 	})
 
-
 	const animateToggle = createSwitch({
 		'type':  'checkbox',
 		'id': 'animate-toggle',
-	});
+		},
+		'progress-animate__input'
+	);
 
 
 	const animateLabel = createElement({
@@ -55,10 +55,13 @@ export const createControls = () => {
 		children: [animateToggle, animateLabel]
 	})
 
-	const hideToggle = createSwitch({
+	const hideToggle = createSwitch(
+		{
 		'type':  'checkbox',
 		'id': 'hide-toggle',
-	});
+		},
+		'progress-hide__input'
+	);
 
 	const hideLabel = createElement({
 		elementType: 'label',
@@ -67,20 +70,37 @@ export const createControls = () => {
 		},
 		text: 'Hide'
 	});
-
 	const hideControl = createElement({
 		elementType: 'div',
 		classname: 'progress-control',
 		children: [hideToggle, hideLabel]
 	})
 
+	controls.append(
+		valueControl,
+		animateControl,
+		hideControl,
+	)
+
+	return controls;
+}
+
+
+export const controlProgressBar = () => {
+	const progressSvg = document.querySelector('.progress-ring');
 	const progressCircle = document.querySelector('.progress-ring-circle');
+	const animateToggle = document.querySelector('.progress-animate__input');
+	const hideToggle = document.querySelector('.progress-hide__input');
+	const valueInput = document.querySelector('.progress-value__input');
+
+
 
 	function updateProgress(percent) {
 		const circumference = 2 * Math.PI * progressCircle.r.baseVal.value;
-		const offset = circumference * (1 - percent / 100);
 		progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
-		progressCircle.style.strokeDashoffset = offset;
+		if (percent > 100 || percent < 0) return;
+		const offset = circumference - percent / 100 * circumference;
+		progressCircle.style.strokeDashoffset = `${offset}`;
 	}
 
 	function toggleAnimation(isAnimated) {
@@ -92,15 +112,25 @@ export const createControls = () => {
 	}
 
 	function toggleVisibility(isVisible) {
-		//
+		if(isVisible){
+			progressSvg.classList.remove('hide');
+		} else {
+			progressSvg.classList.add('hide');
+		}
 	}
 
 
 	valueInput.addEventListener('input', () => {
+		if(valueInput.value > 100){
+			valueInput.value = 100;
+		}
+
+		if(valueInput.value < 0){
+			valueInput.value = 0;
+		}
+
 		updateProgress(valueInput.value);
 	});
-
-
 
 	animateToggle.addEventListener('change', () => {
 		toggleAnimation(animateToggle.checked);
@@ -115,14 +145,4 @@ export const createControls = () => {
 	updateProgress(valueInput.value);
 	toggleAnimation(animateToggle.checked);
 	toggleVisibility(!hideToggle.checked);
-
-
-
-	controls.append(
-		valueControl,
-		animateControl,
-		hideControl,
-	)
-
-	return controls;
 }
