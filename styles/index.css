@@ -1,16 +1,7 @@
+@import 'reset.css';
 @import "../progressBar/ui/switch/switch.css";
+@import "../progressBar/ui/progressControls.css";
 
-html {
-    box-sizing: border-box;
-}
-
-*, *:after, *:before {
-    box-sizing: inherit;
-}
-
-body {
-    margin: 0;
-}
 
 .app {
     display: flex;
@@ -59,7 +50,15 @@ body {
     margin: 10px;
 }
 
-.progress-bar {
 
+@media (orientation: landscape) {
+    .progress-block {
+        min-height: 320px;
+        min-width: 568px;
+        display: flex;
+        gap: 40px;
+        flex-direction: row;
+        justify-content: center;
+    }
 }
 

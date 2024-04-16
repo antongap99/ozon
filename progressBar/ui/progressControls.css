@@ -1,0 +1,26 @@
+
+.progress-block__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.progress-control {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.progress-value__input {
+    border: 1px solid #333;
+    padding: 6px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.progress-value__input:active,
+.progress-value__input:visited {
+    border: 1px solid #333;
+}

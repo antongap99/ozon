@@ -2,10 +2,21 @@ import {createElement} from "../../utils/createElements.js";
 
 export const createSwitch = (attrs) => {
 
-	const input = createElement('input', attrs)
-	const span = createElement('span', {'class': 'slider round'}, '')
+	const input = createElement(
+		{
+			elementType: 'input',
+			attr: attrs,
+		}
+	)
 
-	const label = createElement( 'label', {}, '', [input, span])
-	label?.classList.add('switch')
-	return label
+	const span = createElement({
+		elementType: 'span',
+		classname:  'slider round',
+	})
+
+	return createElement({
+		elementType: 'label',
+		classname: 'switch',
+		children:  [span, input],
+	})
 }

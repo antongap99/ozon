@@ -8,7 +8,8 @@ export const setAttr = (element, attributes) =>  {
 	if (!element || !attributes || typeof attributes !== 'object') {
 		return;
 	}
-	// Проверка на пустой объект атрибутов
+
+
 	if (Object.keys(attributes).length === 0) {
 		return;
 	}

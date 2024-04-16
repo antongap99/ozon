@@ -1,36 +1,42 @@
 import {setAttr} from '../utils/setAttr.js'
-const createProgressRing = () => {
+import {createElement} from "../utils/createElements.js";
+
+const createProgressRing = (width, height) => {
 	const progressRing = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 	progressRing.classList.add('progress-ring');
-	setAttr(progressRing, { 'width': '120', 'height': '120' });
+	setAttr(progressRing, { width, height });
 	return progressRing;
 };
 
-const createProgressRingCircle = () => {
+const createProgressRingCircle = (width, stroke) => {
 	const progressRingCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 	progressRingCircle.classList.add('progress-ring-circle');
-	const width = 60
-	const stroke = 8;
 	const radius = width - (stroke * 2)
 	setAttr(progressRingCircle, { 'cx': `${width}`, 'cy': `${width}`, 'r': `${radius}` });
 	return progressRingCircle;
 };
 
+export const  createProgressBar = () => {
 
-export const  createProgressBlock = () => {
-	const progressBlock = document.createElement('div');
-	progressBlock.classList.add('progress-block');
-
-	const progressBar= document.createElement('div');
-	progressBar.classList.add('progress-bar');
-
-
-	const progressRing = createProgressRing();
-	const progressRingCircle = createProgressRingCircle();
+	const progressBar = createElement({
+		elementType:'div',
+		classname: 'progress-bar',
+	});
+	const progressRing = createProgressRing(150, 150);
+	const progressRingCircle = createProgressRingCircle(75, 8);
 
 	progressRing.append(progressRingCircle);
 	progressBar.append(progressRing)
-	progressBlock.append(progressBar);
 
+	return progressBar;
+}
+
+
+export const createProgressBlock = () => {
+	const progressBlock = createElement({
+		elementType: 'div',
+		classname: 'progress-block',
+	});
+	progressBlock.append(createProgressBar());
 	return progressBlock;
 }
