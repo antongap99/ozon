@@ -1,5 +1,5 @@
-import {setAttr} from '../utils/setAttr.js'
-import {createElement} from "../utils/createElements.js";
+import {setAttr} from '../../utils/setAttr.js'
+import {createElement} from "../../utils/createElements.js";
 
 const createProgressRing = (width, height) => {
 	const progressRing = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -23,21 +23,19 @@ export const createProgressBar = (width, height) => {
 		classname: 'progress-bar',
 	});
 	const progressRing = createProgressRing(width, height);
-	const progressRingTrack= createProgressRingCircle(75, 8, 'progress-ring-track');
-	const progressRingCircle = createProgressRingCircle(75, 8, 'progress-ring-circle');
+	const progressRingTrack= createProgressRingCircle(width / 2, 8, 'progress-ring-track');
+	const progressRingCircle = createProgressRingCircle(width / 2, 8, 'progress-ring-circle');
 
 	progressRing.append(progressRingTrack, progressRingCircle);
-	progressBar.append(progressRing)
+	progressBar.append( progressRing)
 
 	return progressBar;
 }
 
 
 export const createProgressBlock = () => {
-	const progressBlock = createElement({
+	return createElement({
 		elementType: 'div',
 		classname: 'progress-block',
 	});
-	progressBlock.append(createProgressBar(150, 150));
-	return progressBlock;
 }

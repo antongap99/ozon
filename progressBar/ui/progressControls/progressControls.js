@@ -1,5 +1,5 @@
-import {createSwitch} from "./switch/switch.js";
-import {createElement} from "../utils/createElements.js";
+import {createSwitch} from "../switch/switch.js";
+import {createElement} from "../../utils/createElements.js";
 
 export const createControls = () => {
     const controls = createElement({
@@ -12,7 +12,8 @@ export const createControls = () => {
 		text: 'Value',
 		attrs: {
 			'id': 'value-input',
-		}
+		},
+		classname: 'progress-value__label'
 	})
 
 	const valueInput = createElement({
@@ -27,12 +28,6 @@ export const createControls = () => {
 		}
 	});
 
-	const valueControl = createElement({
-		elementType: 'div',
-		classname: 'progress-control',
-		children: [valueInput, valueLabel ]
-	})
-
 	const animateToggle = createSwitch({
 		'type':  'checkbox',
 		'id': 'animate-toggle',
@@ -44,16 +39,13 @@ export const createControls = () => {
 	const animateLabel = createElement({
 		elementType: 'label',
 		attrs: {
-			'for': 'hide-toggle'
+			'for': 'animate-toggle'
 		},
 		text: 'Animate',
+		classname: 'progress-animate__label'
 	});
 
-	const animateControl = createElement({
-		elementType: 'div',
-		classname: 'progress-control',
-		children: [animateToggle, animateLabel]
-	})
+
 
 	const hideToggle = createSwitch(
 		{
@@ -68,8 +60,21 @@ export const createControls = () => {
 		attrs: {
 			'for': 'hide-toggle'
 		},
-		text: 'Hide'
+		text: 'Hide',
+		classname: 'progress-hide__label'
 	});
+
+
+	const valueControl = createElement({
+		elementType: 'div',
+		classname: 'progress-control',
+		children: [valueInput, valueLabel ]
+	})
+	const animateControl = createElement({
+		elementType: 'div',
+		classname: 'progress-control',
+		children: [animateToggle, animateLabel]
+	})
 	const hideControl = createElement({
 		elementType: 'div',
 		classname: 'progress-control',
@@ -92,8 +97,6 @@ export const controlProgressBar = () => {
 	const animateToggle = document.querySelector('.progress-animate__input');
 	const hideToggle = document.querySelector('.progress-hide__input');
 	const valueInput = document.querySelector('.progress-value__input');
-
-
 
 	function updateProgress(percent) {
 		const circumference = 2 * Math.PI * progressCircle.r.baseVal.value;

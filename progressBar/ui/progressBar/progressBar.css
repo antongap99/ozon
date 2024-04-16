@@ -1,13 +1,22 @@
+.progress-block__wrapper {
+    padding: 10px;
+    position: relative;
+}
 
 .progress-block {
-    min-height: 568px;
-    min-width: 320px;
+    min-height: 548px;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     gap: 80px;
-    padding: 115px 0;
+    justify-content: center;
+}
+
+.progress__title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .progress-ring-track {
@@ -20,7 +29,6 @@
     fill: none;
     stroke: #4260cc;
     stroke-width: 12px;
-    stroke-linecap: round;
     transform-origin: center;
     transform: rotate(-90deg);
 }

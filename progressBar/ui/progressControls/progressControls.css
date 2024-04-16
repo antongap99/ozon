@@ -25,3 +25,10 @@
 .progress-value__input:visited {
     border: 1px solid #333;
 }
+
+.progress-animate__label,
+.progress-hide__label,
+.progress-value__label {
+    font-size: 16px;
+    font-weight: 500;
+}
