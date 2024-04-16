@@ -6,39 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test</title>
-    <style>
-
-        .progress-block {
-            position: relative;
-			display: flex;
-			flex-direction: column;
-			gap: 40px;
-        }
-
-        .progress-ring {
-            width: 100%;
-            height: 100%;
-        }
-
-        .progress-ring-circle {
-            fill: none;
-            stroke: #4e42c3;
-            stroke-width: 8;
-            stroke-linecap: round;
-            transform: translate(6px, 6px); /* Чтобы круг был по центру */
-            transition: stroke-dashoffset 0.3s ease;
-        }
-
-        .progress-ring-circle.animated {
-            animation: rotate 2s linear infinite;
-        }
-
-        @keyframes rotate {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
 	<link rel="stylesheet" href="./styles/global.css">
     <script type="module" defer src="./index.js"></script>
 </head>

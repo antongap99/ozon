@@ -1,22 +1,26 @@
 import {createProgressBlock} from './progressBar/index.js'
 import {createControls} from "./progressBar/ui/progressControls.js";
+import {createSwitch} from "./progressBar/ui/switch/switch.js";
+import {createElement} from "./progressBar/utils/createElements.js";
 
 function init() {
 	const app = document.getElementById('root');
     const progressBlock = createProgressBlock();
 
 	// TODO Вынести в функцию createInput
-    const valueInput = document.createElement('input');
-    valueInput.setAttribute('type', 'number');
-    valueInput.setAttribute('id', 'value-input');
-    valueInput.setAttribute('min', '0');
-    valueInput.setAttribute('max', '100');
-    valueInput.setAttribute('value', '50');
+    const valueInput = createElement('input',{
+        'type': 'number',
+        'id': 'value-input',
+        'min': '0',
+        'max': '100',
+        'value': '50',
+    });
 
-	// TODO Вынести в функцию createInput
-    const animateToggle = document.createElement('input');
-    animateToggle.setAttribute('type', 'checkbox');
-    animateToggle.setAttribute('id', 'animate-toggle');
+    const animateToggle = createSwitch({
+        'type':  'checkbox',
+        'id': 'animate-toggle',
+    });
+
 
 	// TODO Вынести в функцию createLabel
     const animateLabel = document.createElement('label');
@@ -24,9 +28,10 @@ function init() {
     animateLabel.textContent = 'Animate';
 
 	// TODO Вынести в функцию createInput
-    const hideToggle = document.createElement('input');
-    hideToggle.setAttribute('type', 'checkbox');
-    hideToggle.setAttribute('id', 'hide-toggle');
+    const hideToggle = createSwitch({
+        'type':  'checkbox',
+        'id': 'hide-toggle',
+    });
 
 	// TODO Вынести в функцию createLabel
     const hideLabel = document.createElement('label');
@@ -53,6 +58,7 @@ function init() {
     function updateProgress(percent) {
         const circumference = 2 * Math.PI * progressCircle.r.baseVal.value;
         const offset = circumference * (1 - percent / 100);
+        console.log('offset', offset)
         progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
         progressCircle.style.strokeDashoffset = offset;
     }
@@ -66,11 +72,7 @@ function init() {
     }
 
     function toggleVisibility(isVisible) {
-        if (isVisible) {
-            progressBlock.style.display = 'block';
-        } else {
-            progressBlock.style.display = 'none';
-        }
+    //
     }
 
 	// TODO Добавить визуал
