@@ -1,4 +1,4 @@
-import {createProgressBlock} from './progressBar'
+import {createProgressBlock} from './progressBar/index.js'
 import {createControls} from "./progressBar/ui/progressControls.js";
 
 function init() {
