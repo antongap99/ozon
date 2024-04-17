@@ -5,10 +5,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
 }
 
-@viewport {
-    user-zoom: fixed;
+/* Стили для старых браузеров, не поддерживающих vh */
+@supports not (height: 100dvh) {
+    .app {
+        height: 100%;
+    }
 }
