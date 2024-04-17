@@ -15,7 +15,7 @@ export const createControls = (idPrefix, defaultValue) => {
 	const controlsHTML = `
         <div class="progress-block__controls">
             <div class="progress-control">
-                <input type="number" class="progress-value__input" id="${valueInputId}" min="0" max="100" value="${defaultValue || 0}">
+                <input type="number" pattern="\\d*" class="progress-value__input" id="${valueInputId}" min="0" max="100" value="${defaultValue || 0}">
                 <label class="progress__label progress-value__label" for="${valueInputId}">Value</label>
             </div>
             <div class="progress-control">
@@ -73,6 +73,9 @@ export const controlProgressBar = (parentBlock) => {
 
 
 	valueInput.addEventListener('input', () => {
+		if(valueInput.value.match(/[^0-9]/g)){
+			valueInput.value = valueInput.value.replace(/[^0-9]/g, "");
+		}
 		if(valueInput.value > 100){
 			valueInput.value = 100;
 		}
