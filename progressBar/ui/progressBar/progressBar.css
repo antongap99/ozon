@@ -39,7 +39,7 @@
     animation: rotate 2s linear infinite;
 }
 
-.progress-ring.hide {
+.progress-ring.hidden {
     visibility: hidden;
     opacity: 0;
 }

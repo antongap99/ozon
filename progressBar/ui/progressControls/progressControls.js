@@ -74,9 +74,9 @@ export const controlProgressBar = (parentBlock) => {
 
 	function toggleVisibility(isVisible) {
 		if(isVisible){
-			progressSvg.classList.remove('hide');
+			progressSvg.classList.remove('hidden');
 		} else {
-			progressSvg.classList.add('hide');
+			progressSvg.classList.add('hidden');
 		}
 	}
 
