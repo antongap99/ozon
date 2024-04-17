@@ -9,13 +9,15 @@ import {createElement} from "./utils/createElements.js";
  * @param {string} initProgressBlockOptions.progressName - Имя прогресса.
  * @param {number} initProgressBlockOptions.stroke - Имя прогресса.
  * @param {number} initProgressBlockOptions.size - Размер блока прогресса.
+ * @param {number} [initProgressBlockOptions.defaultValue] - Начальное значение
  */
 export const initProgressBlock = (initProgressBlockOptions) => {
 	const {
 		app,
 		progressName,
 		size,
-		stroke
+		stroke,
+		defaultValue
 	} = initProgressBlockOptions;
 
 	const progressBlockWrapper = createElement({
@@ -30,7 +32,7 @@ export const initProgressBlock = (initProgressBlockOptions) => {
 
 	const progressBlock = createProgressBlock();
 	const progressBar = createProgressBar(size, size, stroke);
-	const controls = createControls(progressName);
+	const controls = createControls(progressName, defaultValue);
 
 	progressBlock.append(progressBar, controls);
 	progressBlockWrapper.append(progressTitle, progressBlock)

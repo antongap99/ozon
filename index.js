@@ -6,6 +6,7 @@ const init = () =>  {
         progressName: 'progressTest',
         size: 150,
         stroke: 10,
+        defaultValue: 40,
     }
     initProgressBlock(options);
 }

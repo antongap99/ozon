@@ -3,9 +3,10 @@ import {createSwitch} from "../switch/switch.js";
 /**
  * Создает контролы прогресса.
  * @param {string} idPrefix - Префикс для идентификаторов контролов.
+ * @param {number} defaultValue - Начальное значение прогрессбара
  * @returns {HTMLElement} - Созданные контролы прогресса.
  */
-export const createControls = (idPrefix) => {
+export const createControls = (idPrefix, defaultValue) => {
 
 	const valueInputId = `${idPrefix}-value-input`;
 	const animateToggleId = `${idPrefix}-animate-toggle`;
@@ -14,7 +15,7 @@ export const createControls = (idPrefix) => {
 	const controlsHTML = `
         <div class="progress-block__controls">
             <div class="progress-control">
-                <input type="number" class="progress-value__input" id="${valueInputId}" min="0" max="100" value="50">
+                <input type="number" class="progress-value__input" id="${valueInputId}" min="0" max="100" value="${defaultValue || 0}">
                 <label class="progress__label progress-value__label" for="${valueInputId}">Value</label>
             </div>
             <div class="progress-control">
