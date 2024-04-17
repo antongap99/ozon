@@ -15,7 +15,16 @@ export const createControls = (idPrefix, defaultValue) => {
 	const controlsHTML = `
         <div class="progress-block__controls">
             <div class="progress-control">
-                <input type="number" pattern="\\d*" class="progress-value__input" id="${valueInputId}" min="0" max="100" value="${defaultValue || 0}">
+                <input 
+                	type="number" 
+                	pattern="\\d*" 
+                	class="progress-value__input" 
+                	id="${valueInputId}" 
+                	min="0" 
+                	max="100" 
+                	value="${defaultValue || 0}"
+                	inputmode="numeric"
+                >
                 <label class="progress__label progress-value__label" for="${valueInputId}">Value</label>
             </div>
             <div class="progress-control">
@@ -72,19 +81,20 @@ export const controlProgressBar = (parentBlock) => {
 	}
 
 
-	valueInput.addEventListener('input', () => {
-		if(valueInput.value.match(/[^0-9]/g)){
-			valueInput.value = valueInput.value.replace(/[^0-9]/g, "");
+	valueInput.addEventListener('input', (event) => {
+		const inputValue = event.target.value;
+		if(inputValue.match(/[^0-9]/g)){
+			valueInput.value = inputValue.replace(/[^0-9]/g, "");
 		}
-		if(valueInput.value > 100){
+		if(inputValue > 100){
 			valueInput.value = 100;
 		}
 
-		if(valueInput.value < 0){
+		if(inputValue < 0){
 			valueInput.value = 0;
 		}
 
-		updateProgress(valueInput.value);
+		updateProgress(inputValue);
 	});
 
 	animateToggle.addEventListener('change', () => {
