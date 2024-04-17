@@ -2,6 +2,13 @@ import {createProgressBar, createProgressBlock} from './ui/progressBar/createPro
 import {createControls, controlProgressBar} from './ui/progressControls/progressControls.js'
 import {createElement} from "./utils/createElements.js";
 
+/**
+ * Инициализирует блок прогресса в приложении.
+ * @param {Object} initProgressBlockOptions - Параметры инициализации блока прогресса.
+ * @param {HTMLElement} initProgressBlockOptions.app - Родительский элемент, к которому будет добавлен блок прогресса.
+ * @param {string} initProgressBlockOptions.progressName - Имя прогресса.
+ * @param {number} initProgressBlockOptions.size - Размер блока прогресса.
+ */
 export const initProgressBlock = (initProgressBlockOptions) => {
 	const {
 		app,

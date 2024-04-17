@@ -1,5 +1,10 @@
 import {createSwitch} from "../switch/switch.js";
 
+/**
+ * Создает контролы прогресса.
+ * @param {string} idPrefix - Префикс для идентификаторов контролов.
+ * @returns {HTMLElement} - Созданные контролы прогресса.
+ */
 export const createControls = (idPrefix) => {
 
 	const valueInputId = `${idPrefix}-value-input`;
@@ -30,6 +35,10 @@ export const createControls = (idPrefix) => {
 }
 
 
+/**
+ * Управляет прогрессом прогресс-бара.
+ * @param {HTMLElement} parentBlock - Родительский блок прогресс-бара.
+ */
 export const controlProgressBar = (parentBlock) => {
 	const progressSvg = parentBlock.querySelector('.progress-ring');
 	const progressCircle = parentBlock.querySelector('.progress-ring-circle');
