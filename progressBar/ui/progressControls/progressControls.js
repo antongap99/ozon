@@ -1,102 +1,41 @@
 import {createSwitch} from "../switch/switch.js";
-import {createElement} from "../../utils/createElements.js";
 
-export const createControls = () => {
-    const controls = createElement({
-		elementType: 'div',
-		classname: 'progress-block__controls'
-	});
+export const createControls = (idPrefix) => {
 
-	const valueLabel = createElement({
-		elementType: 'label',
-		text: 'Value',
-		attrs: {
-			'id': 'value-input',
-		},
-		classname: 'progress-value__label'
-	})
+	const valueInputId = `${idPrefix}-value-input`;
+	const animateToggleId = `${idPrefix}-animate-toggle`;
+	const hideToggleId = `${idPrefix}-hide-toggle`;
 
-	const valueInput = createElement({
-		elementType: 'input',
-		classname: 'progress-value__input',
-		attrs: {
-			'type': 'number',
-			'id': 'value-input',
-			'min': '0',
-			'max': '100',
-			'value': '50',
-		}
-	});
+	const controlsHTML = `
+        <div class="progress-block__controls">
+            <div class="progress-control">
+                <input type="number" class="progress-value__input" id="${valueInputId}" min="0" max="100" value="50">
+                <label class="progress-value__label" for="${valueInputId}">Value</label>
+            </div>
+            <div class="progress-control">
+                ${createSwitch({ type: 'checkbox', id: animateToggleId}, 'progress-animate__input').outerHTML}
+                <label class="progress-animate__label" for="${animateToggleId}">Animate</label>
+            </div>
+            <div class="progress-control">
+                ${createSwitch({ type: 'checkbox', id: hideToggleId }, 'progress-hide__input').outerHTML}
+                <label class="progress-hide__label" for="${hideToggleId}">Hide</label>
+            </div>
+        </div>
+    `;
 
-	const animateToggle = createSwitch({
-		'type':  'checkbox',
-		'id': 'animate-toggle',
-		},
-		'progress-animate__input'
-	);
+	const controlsContainer = document.createElement('div');
+	controlsContainer.insertAdjacentHTML('beforeend', controlsHTML);
 
-
-	const animateLabel = createElement({
-		elementType: 'label',
-		attrs: {
-			'for': 'animate-toggle'
-		},
-		text: 'Animate',
-		classname: 'progress-animate__label'
-	});
-
-
-
-	const hideToggle = createSwitch(
-		{
-		'type':  'checkbox',
-		'id': 'hide-toggle',
-		},
-		'progress-hide__input'
-	);
-
-	const hideLabel = createElement({
-		elementType: 'label',
-		attrs: {
-			'for': 'hide-toggle'
-		},
-		text: 'Hide',
-		classname: 'progress-hide__label'
-	});
-
-
-	const valueControl = createElement({
-		elementType: 'div',
-		classname: 'progress-control',
-		children: [valueInput, valueLabel ]
-	})
-	const animateControl = createElement({
-		elementType: 'div',
-		classname: 'progress-control',
-		children: [animateToggle, animateLabel]
-	})
-	const hideControl = createElement({
-		elementType: 'div',
-		classname: 'progress-control',
-		children: [hideToggle, hideLabel]
-	})
-
-	controls.append(
-		valueControl,
-		animateControl,
-		hideControl,
-	)
-
-	return controls;
+	return controlsContainer.firstElementChild;
 }
 
 
-export const controlProgressBar = () => {
-	const progressSvg = document.querySelector('.progress-ring');
-	const progressCircle = document.querySelector('.progress-ring-circle');
-	const animateToggle = document.querySelector('.progress-animate__input');
-	const hideToggle = document.querySelector('.progress-hide__input');
-	const valueInput = document.querySelector('.progress-value__input');
+export const controlProgressBar = (parentBlock) => {
+	const progressSvg = parentBlock.querySelector('.progress-ring');
+	const progressCircle = parentBlock.querySelector('.progress-ring-circle');
+	const animateToggle = parentBlock.querySelector('.progress-animate__input');
+	const hideToggle = parentBlock.querySelector('.progress-hide__input');
+	const valueInput = parentBlock.querySelector('.progress-value__input');
 
 	function updateProgress(percent) {
 		const circumference = 2 * Math.PI * progressCircle.r.baseVal.value;

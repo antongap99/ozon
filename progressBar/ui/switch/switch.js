@@ -18,6 +18,6 @@ export const createSwitch = (attrs, classname) => {
 	return createElement({
 		elementType: 'label',
 		classname: 'switch',
-		children:  [input, span, ],
+		children:  [input, span],
 	})
 }

@@ -1,8 +1,12 @@
 import {initProgressBlock} from './progressBar/index.js'
 
 function init() {
-	const app = document.getElementById('root');
-    initProgressBlock(app);
+    const options = {
+        app: document.getElementById('root'),
+        progressName: 'progressTest',
+        size: 150
+    }
+    initProgressBlock(options);
 }
 
 // Инициализация при загрузке страницы

@@ -2,7 +2,13 @@ import {createProgressBar, createProgressBlock} from './ui/progressBar/createPro
 import {createControls, controlProgressBar} from './ui/progressControls/progressControls.js'
 import {createElement} from "./utils/createElements.js";
 
-export const initProgressBlock = (app) => {
+export const initProgressBlock = (initProgressBlockOptions) => {
+	const {
+		app,
+		progressName,
+		size,
+	} = initProgressBlockOptions;
+
 	const progressBlockWrapper = createElement({
 		elementType: 'div',
 		classname: 'progress-block__wrapper'
@@ -14,11 +20,13 @@ export const initProgressBlock = (app) => {
 	})
 
 	const progressBlock = createProgressBlock();
-	const progressBar = createProgressBar(150, 150); // TODO вынести в константы
-	const controls = createControls();
+	const progressBar = createProgressBar(size, size);
+	const controls = createControls(progressName);
 
 	progressBlock.append(progressBar, controls);
 	progressBlockWrapper.append(progressTitle, progressBlock)
 	app.append(progressBlockWrapper);
-	controlProgressBar();
+
+
+	controlProgressBar(progressBlockWrapper);
 }
