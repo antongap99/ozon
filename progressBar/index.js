@@ -7,6 +7,7 @@ import {createElement} from "./utils/createElements.js";
  * @param {Object} initProgressBlockOptions - Параметры инициализации блока прогресса.
  * @param {HTMLElement} initProgressBlockOptions.app - Родительский элемент, к которому будет добавлен блок прогресса.
  * @param {string} initProgressBlockOptions.progressName - Имя прогресса.
+ * @param {number} initProgressBlockOptions.stroke - Имя прогресса.
  * @param {number} initProgressBlockOptions.size - Размер блока прогресса.
  */
 export const initProgressBlock = (initProgressBlockOptions) => {
@@ -14,6 +15,7 @@ export const initProgressBlock = (initProgressBlockOptions) => {
 		app,
 		progressName,
 		size,
+		stroke
 	} = initProgressBlockOptions;
 
 	const progressBlockWrapper = createElement({
@@ -21,13 +23,13 @@ export const initProgressBlock = (initProgressBlockOptions) => {
 		classname: 'progress-block__wrapper'
 	})
 	const progressTitle = createElement({
-		elementType: 'span',
+		elementType: 'h3',
 		classname: 'progress__title',
 		text: 'Progress'
 	})
 
 	const progressBlock = createProgressBlock();
-	const progressBar = createProgressBar(size, size);
+	const progressBar = createProgressBar(size, size, stroke);
 	const controls = createControls(progressName);
 
 	progressBlock.append(progressBar, controls);

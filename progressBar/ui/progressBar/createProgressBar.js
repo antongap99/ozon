@@ -35,17 +35,18 @@ const createProgressRingCircle = (width, stroke, classname) => {
  * Создает прогресс-бар.
  * @param {number} width - Ширина прогресс-бара.
  * @param {number} height - Высота прогресс-бара.
+ * @param {number} stroke - Ширина колец
  * @returns {HTMLElement} - Созданный прогресс-бар.
  */
-export const createProgressBar = (width, height) => {
+export const createProgressBar = (width, height, stroke) => {
 
 	const progressBar = createElement({
 		elementType: 'div',
 		classname: 'progress-bar',
 	});
 	const progressRing = createProgressRing(width, height);
-	const progressRingTrack= createProgressRingCircle(width / 2, 8, 'progress-ring-track');
-	const progressRingCircle = createProgressRingCircle(width / 2, 8, 'progress-ring-circle');
+	const progressRingTrack= createProgressRingCircle(width / 2, stroke, 'progress-ring-track');
+	const progressRingCircle = createProgressRingCircle(width / 2, stroke, 'progress-ring-circle');
 
 	progressRing.append(progressRingTrack, progressRingCircle);
 	progressBar.append( progressRing)
