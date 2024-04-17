@@ -4,7 +4,7 @@
 }
 
 .progress-block {
-    min-height: 548px;
+    min-height: 480px;
     min-width: 300px;
     display: flex;
     flex-direction: column;
