@@ -26,9 +26,7 @@
     border: 1px solid #333;
 }
 
-.progress-animate__label,
-.progress-hide__label,
-.progress-value__label {
+.progress__label {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
 }

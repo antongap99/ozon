@@ -10,15 +10,15 @@ export const createControls = (idPrefix) => {
         <div class="progress-block__controls">
             <div class="progress-control">
                 <input type="number" class="progress-value__input" id="${valueInputId}" min="0" max="100" value="50">
-                <label class="progress-value__label" for="${valueInputId}">Value</label>
+                <label class="progress__label progress-value__label" for="${valueInputId}">Value</label>
             </div>
             <div class="progress-control">
                 ${createSwitch({ type: 'checkbox', id: animateToggleId}, 'progress-animate__input').outerHTML}
-                <label class="progress-animate__label" for="${animateToggleId}">Animate</label>
+                <label class="progress__label progress-animate__label" for="${animateToggleId}">Animate</label>
             </div>
             <div class="progress-control">
                 ${createSwitch({ type: 'checkbox', id: hideToggleId }, 'progress-hide__input').outerHTML}
-                <label class="progress-hide__label" for="${hideToggleId}">Hide</label>
+                <label class="progress__label progress-hide__label" for="${hideToggleId}">Hide</label>
             </div>
         </div>
     `;

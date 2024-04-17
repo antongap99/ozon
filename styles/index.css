@@ -9,3 +9,6 @@
     overflow: hidden;
 }
 
+@viewport {
+    user-zoom: fixed;
+}
