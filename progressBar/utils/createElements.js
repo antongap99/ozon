@@ -8,9 +8,6 @@ import {setAttr} from "./setAttr.js";
  * @param {Object} [createElementOptions.attrs] - Объект с атрибутами для добавления к элементу.
  * @param {string} [createElementOptions.text] - Строка, являющаяся содержимым элемента (только для label).
  * @param {Array<HTMLElement>} [createElementOptions.children] - Массив с дочерними элементами (только для label).
- * @param {Object} [createElementOptions.handler] - Объект с информацией о обработчике события (необязательный).
- * @param {string} createElementOptions.handler.type - Тип события, к которому будет добавлен обработчик (например, 'click', 'change' и т.д.).
- * @param {Function} createElementOptions.handler.function - Функция-обработчик события.
  * @returns {HTMLElement} - Новый DOM элемент с указанными атрибутами и обработчиком события.
  */
 export const createElement = (createElementOptions) => {
@@ -20,7 +17,6 @@ export const createElement = (createElementOptions) => {
 		attrs,
 		text,
 		children,
-		handler,
 	} = createElementOptions
 	// Проверка типа данных для параметра elementType
 	if (typeof elementType !== 'string') {
@@ -42,10 +38,6 @@ export const createElement = (createElementOptions) => {
 		element.append(...children);
 	}
 
-	// Добавляем обработчик, если он передан
-	if (handler && typeof handler.type === 'string' && typeof handler.function === 'function') {
-		element.addEventListener(handler.type, handler.function);
-	}
 
 	if(classname){
 		element.className = classname;
